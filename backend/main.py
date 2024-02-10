@@ -119,7 +119,7 @@ def get_log(log_id):
 def get_today_logs(username):
     with get_database_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute("SELECT * from logs WHERE patient_id = ? AND start_time > ? AND start_time < ?", (username, int(time.time()), int(time.time()) + 86400))
+        cursor.execute("SELECT * from logs WHERE patient_username = ? AND start_time > ? AND start_time < ?", (username, int(time.time()), int(time.time()) + 86400))
         logs = cursor.fetchall()
         return {
             "logs": [dict(log) for log in logs]

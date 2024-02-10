@@ -1,7 +1,19 @@
 <script setup>
 import { userAccountStore } from '../stores/userAccountStore';
+import { ref, onMounted } from 'vue';
 
 const usersStore = userAccountStore();
+const log = ref([]);
+
+onMounted(() => {
+  if (usersStore.username != null) {
+    fetch("http://127.0.0.1:5000/get_logs/" + usersStore.username)
+        .then(response => response.json())
+        .then(data => {
+            log.value = data;
+        });
+  }
+});
 </script>
 
 <template>
@@ -9,23 +21,6 @@ const usersStore = userAccountStore();
     Please select a username first to continue!
   </div>
   <div class="card" v-else>
-    <div class="card-content">
-      <p class="title">
-
-        {{ usersStore.username == null ? 'Select User' : usersStore.username }}
-      </p>
-    </div>
-    <footer class="card-footer">
-      <p class="card-footer-item">
-        <span>
-          View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
-        </span>
-      </p>
-      <p class="card-footer-item">
-        <span>
-          Share on <a href="#">Facebook</a>
-        </span>
-      </p>
-    </footer>
+    {{  log }}
   </div>
 </template>
