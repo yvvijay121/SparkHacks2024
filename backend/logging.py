@@ -12,8 +12,8 @@ def generate_events(start_date, end_date, event_count):
         start_of_day = start + timedelta(days=i)
         for j in range(event_count):
             events.append({
-                "date": start_of_day + timedelta(minutes=3600 / event_count),
-                "event_number": j
+                "start_date": start_of_day + j * timedelta(hours=24 / event_count) - timedelta(minutes=15),
+                "end_date": start_of_day + j * timedelta(hours=24 / event_count) + timedelta(minutes=15)
             })
     
     return events

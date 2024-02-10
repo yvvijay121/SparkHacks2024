@@ -1,5 +1,6 @@
 from flask import Flask, request
 import sqlite3
+import time
 
 app = Flask(__name__)
 
@@ -58,11 +59,13 @@ def remove_drug(username, unii):
         drugs = dict(drugs)["drugs"].split(',') if drugs else []
         drugs.remove(unii)
         cursor.execute("UPDATE patients SET drugs = ? WHERE user_name = ?", (','.join(drugs), username))
+        current_time = int(time.time())
+        cursor.execute("DELETE FROM logs WHERE start_time > ?", (current_time,))
         connection.commit()
         return {
             "status": "success"
         }
-    
+
 @app.route('/add_drug/<username>/', methods=['POST'])
 def add_drug(username):
     with get_database_connection() as connection:
@@ -73,6 +76,8 @@ def add_drug(username):
         drugs.append(request.json["unii"])
         cursor.execute("UPDATE patients SET drugs = ? WHERE user_name = ?", (','.join(drugs), username))
         cursor.execute("INSERT INTO drugs (generic_name, dosage, drug_route, instructions, start_date, end_date, frequency, unii) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (request.json["generic_name"], request.json["dosage"], request.json["drug_route"], request.json["instructions"], request.json["start_date"], request.json["end_date"], request.json["frequency"], request.json["unii"]))
+        cursor.execute("INSERT INTO logs (drug_id, patient_id, start_time, end_time) VALUES (?, ?, ?, ?)",
+                       (request.json["drug_id"], request.json["patient_id"], request.json["start_time"], request.json["end_time"]))
         connection.commit()
         return {
             "status": "success"
