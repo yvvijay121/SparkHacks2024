@@ -51,11 +51,13 @@ import { RouterLink, RouterView } from 'vue-router'
           </button>
         </div>
         <div class="level-item has-text-centered">
-          <button class="button is-large box">
-            <span class="icon is-small">
+          <router-link to="/drug_list" custom v-slot="{ navigate }">
+              <button class="button is-large box" @click="navigate">
+                <span class="icon is-small">
               <ion-icon name="list-outline"></ion-icon>
             </span>
-          </button>
+              </button>
+            </router-link>
         </div>
         <div class="level-item has-text-centered">
           <button class="button is-large box">
