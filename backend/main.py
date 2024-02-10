@@ -122,15 +122,5 @@ def get_log(log_id):
             "log": dict(log) if log else None
         }
 
-@app.route('/get_current_logs/<username>')
-def get_today_logs(username):
-    with get_database_connection() as connection:
-        cursor = connection.cursor()
-        cursor.execute("SELECT * from logs WHERE patient_username = ? AND end_time > ?", (username, int(time.time())))
-        logs = cursor.fetchall()
-        return {
-            "logs": [dict(log) for log in logs]
-        }
-
 if __name__ == '__main__':
     app.run()
