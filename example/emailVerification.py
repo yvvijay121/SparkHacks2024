@@ -1,4 +1,4 @@
-//SHSHacks 2023 Email notification system
+//Hackathon Email notification system
 import smtplib
 import ssl
 
