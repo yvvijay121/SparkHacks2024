@@ -20,13 +20,14 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav class="level is-mobile mx-5">
         <div class="level-left">
           <div class="level-item has-text-centered">
-            <RouterLink to="/"><span class="tag is-info is-large has-text-weight-bold">aegisRx</span></RouterLink>
+            <RouterLink to="/"><span class="tag is-info is-large has-text-weight-bold box"><ion-icon name="shield-outline"
+                  class="pr-2"></ion-icon>aegisRx</span></RouterLink>
           </div>
         </div>
         <div class="level-right">
           <div class="level-item has-text-centered">
             <router-link to="/user_select" custom v-slot="{ navigate }">
-              <button class="button is-small" @click="navigate">
+              <button class="button is-small box" @click="navigate">
                 <span class="icon is-small">
                   <ion-icon name="people-circle-outline"></ion-icon>
                 </span>

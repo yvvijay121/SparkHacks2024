@@ -32,6 +32,6 @@ CREATE TABLE logs (
     end_time INTEGER NOT NULL,
     dose_time INTEGER,
     taken TEXT NOT NULL,
-    FOREIGN KEY (patient_id) REFERENCES patients(id)
+    FOREIGN KEY (patient_id) REFERENCES patients(id),
     FOREIGN KEY (drug_id) REFERENCES drugs(id)
 );
