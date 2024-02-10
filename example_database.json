@@ -1,0 +1,26 @@
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone": "123-456-7890",
+    "drugs": [
+        {
+            "dosage": "20mg",
+            "generic_name": "Atorvastatin",
+            "dosage_route": "oral",
+            "product_ndc": "0002-8201",
+            "here goes more infromation we need to store openFDA infromation": null,
+            "dosage_information": {
+                "frequency": 3,
+                "start_iso": "2015-01-01",
+                "end_date": "2015-03-01",
+                "logs": [
+                    {
+                        "date": "2015-01-01",
+                        "time": "14:00",
+                        "notes": "I took the pill with a glass of water"
+                    }
+                ]
+            }
+        }
+    ]
+}
