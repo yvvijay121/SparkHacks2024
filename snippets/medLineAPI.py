@@ -17,13 +17,16 @@ def getData(ncode):
   if response.status_code == 200:
     # Extract the data from the response
     data = response.json()
+    if(data['feed']['entry']): 
     # Print out the first result's summary:
-    # print("First article: ",data['feed']['entry'][0]['summary']['_value'])
-    
-    # Save the data to a local JSON file
-    with open("data.json", "w") as file:
-      # Inputs the data of the first entry including the name and the summary
-      json.dump(data['feed']['entry'][0], file)
+      # print("First article: ",data['feed']['entry'][0]['summary']['_value'])
+      
+      # Save the data to a local JSON file
+      with open("data.json", "w") as file:
+        # Inputs the data of the first entry including the name and the summary
+        json.dump(data['feed']['entry'][0], file)
+    else:
+      print("Nothing found")
   
   else:
     print("Error: Failed to retrieve data from the MedLine Connect Plus API")
