@@ -45,7 +45,10 @@ function date_sorted(logs) {
     <div class="card m-2" v-for="(log, index) in log" :key="index">
       <div class="card-content">
         <p class="title is-4">{{ searchValueInList(drugs, log.drug_id).generic_name }}</p>
-        <p class="subtitle is-6">{{ log.end_time }}</p>
+        <p class="subtitle is-italic is-6">{{ log.start_time }} - {{ log.end_time }}</p>
+        <ul class="content">
+          <li>{{ searchValueInList(drugs, log.drug_id).instructions }}</li>
+        </ul>
         <p class="subtitle is-6">{{ log.taken }}</p>
       </div>
     </div>
