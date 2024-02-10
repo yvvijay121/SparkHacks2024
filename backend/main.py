@@ -1,6 +1,7 @@
 from flask import Flask, request
 import sqlite3
 import time
+from flask_cors import CORS
 
 app = Flask(__name__)
 
