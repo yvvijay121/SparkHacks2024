@@ -39,7 +39,7 @@ import HelloWorld from './components/HelloWorld.vue'
       </nav>
     </div>
   </nav>
-  <div class="container is-fluid mt-3 mb-6">
+  <div class="container is-fluid mt-6 mb-6">
     <RouterView />
   </div>
   <nav class="navbar is-fixed-bottom is-transparent">

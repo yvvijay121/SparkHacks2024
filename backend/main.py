@@ -8,16 +8,6 @@ def get_database_connection():
     connection.row_factory = sqlite3.Row
     return connection
 
-# @app.route('/')
-# def index():
-#     with get_database_connection() as connection:
-#         cursor = connection.cursor()
-#         cursor.execute("SELECT * FROM drugs")
-#         patients = cursor.fetchall()
-#         return {
-#             "patients": [dict(patient) for patient in patients]
-#         }
-
 @app.route('/get_user/<username>')
 def get_user(username):
     with get_database_connection() as connection:
