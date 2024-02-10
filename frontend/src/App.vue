@@ -59,20 +59,6 @@ import { RouterLink, RouterView } from 'vue-router'
               </button>
             </router-link>
         </div>
-        <div class="level-item has-text-centered">
-          <button class="button is-large box">
-            <span class="icon is-small">
-              <ion-icon name="stats-chart-outline"></ion-icon>
-            </span>
-          </button>
-        </div>
-        <div class="level-item has-text-centered">
-          <button class="button is-large box">
-            <span class="icon is-small">
-              <ion-icon name="settings-outline"></ion-icon>
-            </span>
-          </button>
-        </div>
       </nav>
     </div>
   </nav>
