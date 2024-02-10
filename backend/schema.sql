@@ -27,11 +27,11 @@ CREATE TABLE drugs (
 CREATE TABLE logs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     drug_id INTEGER NOT NULL,
-    patient_id INTEGER NOT NULL,
+    patient_username INTEGER NOT NULL,
     start_time INTEGER NOT NULL,
     end_time INTEGER NOT NULL,
     dose_time INTEGER,
     taken TEXT,
-    FOREIGN KEY (patient_id) REFERENCES patients(id),
+    FOREIGN KEY (patient_username) REFERENCES patients(user_name),
     FOREIGN KEY (drug_id) REFERENCES drugs(id)
 );

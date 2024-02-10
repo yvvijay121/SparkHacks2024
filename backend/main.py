@@ -76,8 +76,8 @@ def add_drug(username):
         drugs.append(request.json["unii"])
         cursor.execute("UPDATE patients SET drugs = ? WHERE user_name = ?", (','.join(drugs), username))
         cursor.execute("INSERT INTO drugs (generic_name, dosage, drug_route, instructions, start_date, end_date, frequency, unii) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (request.json["generic_name"], request.json["dosage"], request.json["drug_route"], request.json["instructions"], request.json["start_date"], request.json["end_date"], request.json["frequency"], request.json["unii"]))
-        cursor.execute("INSERT INTO logs (drug_id, patient_id, start_time, end_time) VALUES (?, ?, ?, ?)",
-                       (request.json["drug_id"], request.json["patient_id"], request.json["start_time"], request.json["end_time"]))
+        cursor.execute("INSERT INTO logs (drug_id, patient_username, start_time, end_time) VALUES (?, ?, ?, ?)",
+                       (request.json["drug_id"], username, request.json["start_time"], request.json["end_time"]))
         connection.commit()
         return {
             "status": "success"
@@ -93,6 +93,35 @@ def update_drug(unii):
             "status": "success"
         }
 
+@app.route('/get_logs/<username>')
+def get_logs(username):
+    with get_database_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * from logs WHERE patient_username = ?", (username,))
+        logs = cursor.fetchall()
+        return {
+            "logs": [dict(log) for log in logs]
+        }
+
+@app.route('/get_log/<log_id>')
+def get_log(log_id):
+    with get_database_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * from logs WHERE id = ?", (log_id,))
+        log = cursor.fetchone()
+        return {
+            "log": dict(log) if log else None
+        }
+
+@app.route('/get_today_logs/<username>')
+def get_today_logs(username):
+    with get_database_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * from logs WHERE patient_id = ? AND start_time > ? AND start_time < ?", (username, int(time.time()), int(time.time()) + 86400))
+        logs = cursor.fetchall()
+        return {
+            "logs": [dict(log) for log in logs]
+        }
 
 if __name__ == '__main__':
     app.run()

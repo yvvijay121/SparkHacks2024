@@ -1,4 +1,6 @@
 import sqlite3
+from datetime import datetime, timedelta
+import random
 
 connection = sqlite3.connect('database.db')
 
@@ -29,5 +31,29 @@ drugs_data = [
 ]
 
 cur.executemany("INSERT INTO drugs (generic_name, dosage, drug_route, instructions, start_date, end_date, frequency, unii) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", drugs_data)
+
+for drug in drugs_data:
+    date_format = "%Y-%m-%d"
+    start = datetime.strptime(drug[4], date_format)
+    end = datetime.strptime(drug[5], date_format)
+
+    number_of_days = (end - start).days
+
+    for k in range(number_of_days):
+        start_of_day = start + timedelta(days=k)
+        for j in range(int(drug[6])):
+            if drug[7] in users[0][3]:
+                patient_username = 'johndoe'
+            else:
+                patient_username = 'janedoe'
+            taken = 'true' if random.random() > 0.2 else 'false' 
+            cur.execute("INSERT INTO logs (drug_id, patient_username, start_time, end_time, dose_time, taken) VALUES (?, ?, ?, ?, ?, ?)",
+                       (drug[7],
+                        patient_username,
+                        start_of_day + j * timedelta(hours=24 / int(drug[6])) - timedelta(minutes=15),
+                        start_of_day + j * timedelta(hours=24 / int(drug[6])) + timedelta(minutes=15),
+                        start_of_day + j * timedelta(hours=24 / int(drug[6])),
+                        taken))
+
 connection.commit()
 connection.close()
