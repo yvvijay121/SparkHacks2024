@@ -4,6 +4,7 @@ import time
 from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 def get_database_connection():
     connection = sqlite3.connect('database.db')
