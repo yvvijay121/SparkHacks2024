@@ -20,56 +20,54 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav class="level is-mobile mx-5">
         <div class="level-left">
           <div class="level-item has-text-centered">
-            <button class="button is-small">
-              <span class="icon is-small">
-                <ion-icon name="accessibility-outline"></ion-icon>
-              </span>
-            </button>
+            <RouterLink to="/"><span class="tag is-info is-large has-text-weight-bold">aegisRx</span></RouterLink>
           </div>
         </div>
         <div class="level-right">
           <div class="level-item has-text-centered">
-            <button class="button is-small">
-              <span class="icon is-small">
-                <ion-icon name="accessibility-outline"></ion-icon>
-              </span>
-            </button>
+            <router-link to="/user_select" custom v-slot="{ navigate }">
+              <button class="button is-small" @click="navigate">
+                <span class="icon is-small">
+                  <ion-icon name="people-circle-outline"></ion-icon>
+                </span>
+              </button>
+            </router-link>
           </div>
         </div>
       </nav>
     </div>
   </nav>
-  <div class="container is-fluid mt-6 mb-6">
+  <div class="container is-fluid mt-6 mb-7">
     <RouterView />
   </div>
   <nav class="navbar is-fixed-bottom is-transparent">
     <div class="container is-fluid force-full">
       <nav class="level is-mobile mx-5">
         <div class="level-item has-text-centered">
-          <button class="button is-large">
+          <button class="button is-large box">
             <span class="icon is-small">
-              <ion-icon name="accessibility-outline"></ion-icon>
+              <ion-icon name="chatbox-ellipses-outline"></ion-icon>
             </span>
           </button>
         </div>
         <div class="level-item has-text-centered">
-          <button class="button is-large">
+          <button class="button is-large box">
             <span class="icon is-small">
-              <ion-icon name="accessibility-outline"></ion-icon>
+              <ion-icon name="list-outline"></ion-icon>
             </span>
           </button>
         </div>
         <div class="level-item has-text-centered">
-          <button class="button is-large">
+          <button class="button is-large box">
             <span class="icon is-small">
-              <ion-icon name="accessibility-outline"></ion-icon>
+              <ion-icon name="stats-chart-outline"></ion-icon>
             </span>
           </button>
         </div>
         <div class="level-item has-text-centered">
-          <button class="button is-large">
+          <button class="button is-large box">
             <span class="icon is-small">
-              <ion-icon name="accessibility-outline"></ion-icon>
+              <ion-icon name="settings-outline"></ion-icon>
             </span>
           </button>
         </div>
@@ -83,5 +81,9 @@ import HelloWorld from './components/HelloWorld.vue'
 
 .force-full {
   display: inline !important;
+}
+
+.mb-7 {
+  margin-bottom: 5rem;
 }
 </style>
