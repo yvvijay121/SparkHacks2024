@@ -46,7 +46,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <div class="level-item has-text-centered">
           <button class="button is-large box">
             <span class="icon is-small">
-              <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+              <ion-icon name="search-outline"></ion-icon>
             </span>
           </button>
         </div>
