@@ -1,10 +1,11 @@
+#Email notification system Hackathon
 import smtplib
 import ssl
 
 smtPort = 587
 smptServer = "smtp.gmail.com"
 emailFrom = "petals.shshacks.2023@gmail.com"
-emailTo = "unifiedummy@gmail.com"  #change to user email
+emailTo = input("Enter the email you want the email to be sent to: ")
 pas = "zvgmfnhechrxjboy"
 message = "Hello billy"         #put in the input value from the user
 
