@@ -2,6 +2,7 @@ from flask import Flask, request
 import sqlite3
 import time
 from flask_cors import CORS
+from snippets.medLineAPI import getData
 
 app = Flask(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
@@ -120,6 +121,15 @@ def get_log(log_id):
         log = cursor.fetchone()
         return {
             "log": dict(log) if log else None
+        }
+
+@app.route('/getDrugData', methods=["POST"])
+def getData():
+    if request.method == "POST":
+        data = request.form['getDrugData']
+        response = getData(data)
+        return {
+            "sum": [response]
         }
 
 if __name__ == '__main__':
