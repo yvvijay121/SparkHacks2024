@@ -37,9 +37,16 @@ def get_drugs(username):
         cursor = connection.cursor()
         cursor.execute("SELECT drugs FROM patients WHERE user_name = ?", (username,))
         drugs = cursor.fetchone()
+        drugs = dict(drugs)["drugs"].split(',') if drugs else []
+        cursor.execute("SELECT * FROM drugs WHERE unii IN ({})".format(','.join(['?']*len(drugs))), drugs)
+        # log request
+        druginfo = cursor.fetchall()
         return {
-            "drugs": dict(drugs)["drugs"].split(',') if drugs else None
+            "drugs": [dict(drug) for drug in druginfo]
         }
+        # return {
+        #     "drugs": dict(drugs)["drugs"].split(',') if drugs else None
+        # }
 
 @app.route('/get_drug/<unii>')
 def get_drug(unii):
@@ -115,11 +122,11 @@ def get_log(log_id):
             "log": dict(log) if log else None
         }
 
-@app.route('/get_today_logs/<username>')
+@app.route('/get_current_logs/<username>')
 def get_today_logs(username):
     with get_database_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute("SELECT * from logs WHERE patient_username = ? AND start_time > ? AND start_time < ?", (username, int(time.time()), int(time.time()) + 86400))
+        cursor.execute("SELECT * from logs WHERE patient_username = ? AND end_time > ?", (username, int(time.time())))
         logs = cursor.fetchall()
         return {
             "logs": [dict(log) for log in logs]
