@@ -2,12 +2,12 @@ import requests
 import json
 
 # Define the base URL for the openFDA API
-base_url = "https://api.fda.gov/drug/event.json"
+base_url = "https://api.fda.gov/drug/label.json"
 
 # Define the search parameters
 search_params = {
-  "search": "patient.drug.medicinalproduct:acetaminophen",
-  "limit": 1  # Limit the number of results to 10
+  "search": "openfda.unii:786Z46389E",
+  "limit": 1  # Limit the number of results to 1
 }
 
 # Send the GET request to the openFDA API
