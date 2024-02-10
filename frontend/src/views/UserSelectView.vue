@@ -1,4 +1,4 @@
-Vue.prototype.$hostname = 'http'
+Vue.prototype.$username = 'johndoe'
 
 <script>
 export default {
@@ -23,14 +23,11 @@ export default {
   <div class = "li">
     <li v-for="( users , index) in users">
         <div class="box">
-            <label class = "radio">
-                <input type = "radio">
-                Show
-                <input type = "radio">
-                Hide | 
-                Toggle Data |
-            </label>
-                {{ users.first_name }} {{ users.last_name }}
+            <div class="switch-field">
+                <input type="radio" id="radio-one" name="switch-one" v-model="pick" value="$username"/>
+                <label for="radio-one"> Show </label>
+	        </div> 
+            {{ users.first_name }} {{ users.last_name }}
         </div>
     </li>
  </div>
