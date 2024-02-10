@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { userAccountStore } from './stores/userAccountStore';
 </script>
 
 <template>
@@ -39,7 +39,8 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </nav>
   <div class="container is-fluid mt-6 mb-7">
-    <RouterView />
+    <RouterView v-if="userAccountStore.username"/>
+    
   </div>
   <nav class="navbar is-fixed-bottom is-transparent">
     <div class="container is-fluid force-full">

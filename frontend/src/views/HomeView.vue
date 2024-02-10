@@ -1,12 +1,14 @@
 <script setup>
+import { userAccountStore } from '../stores/userAccountStore';
 
+const usersStore = userAccountStore();
 </script>
 
 <template>
   <div class="card">
   <div class="card-content">
     <p class="title">
-      “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+      {{ usersStore.username }}
     </p>
     <p class="subtitle">
       Jeff Atwood

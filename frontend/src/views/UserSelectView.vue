@@ -1,40 +1,41 @@
-Vue.prototype.$username = 'johndoe'
+<script setup>
+import { ref, onMounted, watch } from 'vue';
+import { userAccountStore } from '../stores/userAccountStore';
 
-<script>
-export default {
-    name: "get-request",
-    data() {
-        return {
-            users: {},
-        };
-    },
-    created(){
-        fetch("http://127.0.0.1:105/get_users")
+const users = ref([]);
+
+onMounted(() => {
+    fetch("http://127.0.0.1:5000/get_users")
         .then(response => response.json())
-        .then(data => (this.users = data.users));
-    }
-};
-</script>
+        .then(data => {
+            users.value = data.users;
+        });
+});
 
+const pick = ref('');
+
+const usersStore = userAccountStore();
+
+watch(pick, (newValue) => {
+    usersStore.username = newValue;
+});
+
+
+</script>
 <template>
-  <div class="box">
-    <h1>Select User</h1>
-  </div>
-  <div class = "li">
-    <li v-for="( users , index) in users">
-        <div class="box">
-            <div class="switch-field">
-                <input type="radio" id="radio-one" name="switch-one" v-model="pick" value="$username"/>
-                <label for="radio-one"> Show </label>
-	        </div> 
-            {{ users.first_name }} {{ users.last_name }}
-        </div>
-    </li>
- </div>
+    <div class="box">
+        <h1 class="title is-3">Select User</h1>
+        <li v-for="(user, index) in users">
+            <div class="switch-field m-3">
+                <input type="radio" id="radio-one" class="m-2" name="switch-one" v-model="pick" :value="user.user_name" />
+                <label for="radio-one"> {{ user.first_name }} {{ user.last_name }} </label>
+            </div>
+        </li>
+    </div>
 </template>
 
 <style>
-li{
+li {
     list-style-type: none;
 }
 </style>
