@@ -2,7 +2,7 @@ import requests
 import json
 
 # Define the base URL for the openFDA API
-base_url = "https://api.fda.gov/drug/label.json"
+base_url = "http://api.fda.gov/drug/label.json"
 
 # Define the search parameters
 search_params = {

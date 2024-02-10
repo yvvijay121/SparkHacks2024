@@ -18,6 +18,16 @@ def get_user(username):
             "user": dict(user) if user else None
         }
 
+@app.route('/get_users')
+def get_users():
+    with get_database_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM patients")
+        users = cursor.fetchall()
+        return {
+            "users": [dict(user) for user in users]
+        }
+
 @app.route('/get_drugs/<username>')
 def get_drugs(username):
     with get_database_connection() as connection:
