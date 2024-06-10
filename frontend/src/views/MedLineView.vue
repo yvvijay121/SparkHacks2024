@@ -1,40 +1,42 @@
 <script>
-export default{
-    name:"post",
-    data(){
-        return{
-            posts: {
-                ncd: null,
-            }
+import { string } from '@tensorflow/tfjs';
+import { ref } from 'vue'
+const drug = ref('')
+
+export default {
+    data() {
+        return {
+            drug: '',
+            sum: []
         }
     },
-    methods:{
-        reverseMessage: function() {    
-        fetch('/getDrugData', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.message)
+    methods: {
+        getData() {
+            console.log(this.drug)
+            const url = 'https://connect.medlineplus.gov/service?mainSearchCriteria.v.cs=2.16.840.1.113883.6.69&mainSearchCriteria.v.c=';
+            const urlEnd = '&informationRecipient.languageCode.c=en'
+            let resultEnd = url.concat(this.drug, urlEnd)
+            fetch(resultEnd, {
+                mode: 'no-cors',
             })
-            .then(response => response.json())
-            .then(data => this.message = data)
+                .then(res => res.json())
+                .then(data => this.sum = data)
+                .catch(err => console.log("youre a loser"))
+            }
     }
-    }
-}
+}  
 </script>
 
 <template>
     <h1 class="title is-1">Find your drug information</h1>
     <div class="card-content">
-        <form @submit="drugData">
-            <input class="input" type="text" placeholder="Enter you NCD">
-            <button v-on:click="getData">Go</button>
+        <form @submit.prevent="getData">
+            <input v-model="drug" required placeholder="Enter you NDC">
+            <button>Go</button>
         </form>
     </div>
     <div class = "card-content">
         <h2>Here is the summary of the drug:</h2>
-        {{ output }}
+        {{ sum }}
     </div>
 </template>

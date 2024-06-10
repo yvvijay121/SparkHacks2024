@@ -123,6 +123,7 @@ def get_log(log_id):
             "log": dict(log) if log else None
         }
 
+
 # @app.route('/getDrugData', methods=["POST"])
 # def getData():
 #     if request.method == "POST":
