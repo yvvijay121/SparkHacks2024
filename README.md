@@ -1,40 +1,19 @@
 SpakHacks 2024 project with Yash Vijay, Trenton Coleman, Aditya Dalal and Rohith Komati 
 
-Overall Project:
-Drug tracker application that allows used to manage and be notified of the drugs that they are taking 
-
-Flask backend:
-
-Database Categories:
-Table
-Name
-Phone number
-Patient ID#
-Drug Table
-Name of drug and other related information, such as:
-Whatever we need to access both openFDA API (generic name)
-Whatever we need to search through drug interactions CSV
-Dosage Schedule:
-Time interval between dosages
-How many times per day
-Times that they missed the dosage (list of ISO timestamps)
-
-
-Dosage Table:
-Dosage UUID
-Drug ID, 
-Patient ID
-Start of Time Range (ISO)
-End of Time Range (ISO)
-Actual Taking of Drug (ISO)
-Enum for yet to be taken/not taken/taken
-
-Basic Features
-Gantt chart in middle to track how drugs are taken
-Simple card list of drugs that are being taken & picture of drug along with drug info (dosage, how long, complications, etc.)
-Color coding
-Listing symptoms
-Medical history
+## Inspiration
+We were inspired by pharmaceutical and medical apps such as VCS and Medisafe, but we felt that we could create some small improvements to the overall UI and 
+## What it does
+AegisRx is a drug tracking app that schedules and reminds users of what prescriptions they need to take and provides notifications if they are overtaking or undertaking certain drugs.
+## How we built it
+AegisRx was first implemented through a wireframe design on Figma. Yash and Aditya mainly programmed our project while other members drew how the scheduling would look in a web interface. 
+## Challenges we ran into
+We wanted to add SMS and email notifications along with text-to-speech functionality to appeal to geriatric users, but due to time constraints, we were unable to implement this.
+## Accomplishments that we're proud of
+We're very proud of your UI and our user login functionality. This made our project pop out more visually which as we consistently revised our UI was very helpful.
+## What we learned
+We learned full-stack development and how to interact with SQLite databases in JavaScript and Python. Additionally, we learned responsive web design and UI.
+## What's next for AegisRx Drug Tracker Web Application
+In the future, we look to finish our app in hopes of developing a fully functioning drug database search engine.
 
 New features
 SMS/phone call notifications for taking medicine
