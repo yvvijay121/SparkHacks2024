@@ -12,7 +12,7 @@ cur = connection.cursor()
 
 users = [
     ('John', 'Doe', '1234564738', '804826J2HU,786Z46389E,362O9ITL9D,4B3SC438HI', 'johndoe'),
-    ('Jane', 'Deer', '5679480035', 'L6UH7ZF8HC,QWB9JQZ4F1,7CUC9DDI9F,7AJO3BO7QN', 'janedoe')
+    ('Jane', 'Deer', '5679480035', 'L6UH7ZF8HC,QWB9JQZ4F1,7CUC9DDI9F,7AJO3BO7QN', 'janedoe'),
 ]
 
 cur.executemany("INSERT INTO patients (first_name, last_name, phone, drugs, user_name) VALUES (?, ?, ?, ?, ?)",

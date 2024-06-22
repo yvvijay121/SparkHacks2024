@@ -19,7 +19,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav class="level is-mobile mx-5">
         <div class="level-left">
           <div class="level-item has-text-centered">
-            <RouterLink to="/"><span class="tag is-info is-large has-text-weight-bold box"><ion-icon name="shield-outline"
+            <RouterLink to="/home"><span class="tag is-info is-large has-text-weight-bold box"><ion-icon name="shield-outline"
                   class="pr-2"></ion-icon>aegisRx</span></RouterLink>
           </div>
         </div>
@@ -44,11 +44,13 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="container is-fluid force-full">
       <nav class="level is-mobile mx-5">
         <div class="level-item has-text-centered">
-          <button class="button is-large box">
-            <span class="icon is-small">
-              <ion-icon name="search-outline"></ion-icon>
-            </span>
-          </button>
+          <router-link to="/med_line" custom v-slot = "{ navigate }">
+            <button class="button is-large box" @click = "navigate">
+              <span class="icon is-small">
+                <ion-icon name="search-outline"></ion-icon>
+              </span>
+            </button>
+          </router-link>
         </div>
         <div class="level-item has-text-centered">
           <router-link to="/drug_list" custom v-slot="{ navigate }">

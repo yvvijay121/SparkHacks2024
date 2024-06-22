@@ -53,7 +53,7 @@ function date_sorted(logs) {
         </ul>
         <div class="field">
           <label class="checkbox">
-            <input type="checkbox" disabled checked v-model="log.taken">
+            <input type="checkbox" disabled v-model="log.taken">
             Taken yet
           </label>
         </div>

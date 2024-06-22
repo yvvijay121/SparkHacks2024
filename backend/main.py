@@ -124,14 +124,5 @@ def get_log(log_id):
         }
 
 
-# @app.route('/getDrugData', methods=["POST"])
-# def getData():
-#     if request.method == "POST":
-#         data = request.form['getDrugData']
-#         response = getData(data)
-#         return {
-#             "sum": [response]
-#         }
-
 if __name__ == '__main__':
     app.run()
