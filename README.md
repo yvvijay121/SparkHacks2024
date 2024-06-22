@@ -24,4 +24,6 @@ Labels for settings within app
 Family account system for app
 Previous medications (how long were you taking, WHY you stopped taking it)
 
+![Screen Recording 2024-06-22 at 2 54 03 PM (1)](https://github.com/yvvijay121/SparkHacks2024/assets/65195116/3ca3c7fd-af2c-4386-a8df-e61d459360a8)
+
 [Dev Docs](https://docs.google.com/document/d/17XwLa5vnaRyn055X1fiz8kVhpMb4cP5uQixNE5NjAGY/edit?usp=sharing)
