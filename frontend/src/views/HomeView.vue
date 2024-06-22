@@ -3,11 +3,17 @@ import { userAccountStore } from '../stores/userAccountStore';
 import { ref, onMounted } from 'vue';
 
 const usersStore = userAccountStore();
+const user = ref([]);
 const log = ref([]);
 const drugs = ref([]);
 
 onMounted(() => {
   if (usersStore.username != null) {
+    fetch("http://127.0.0.1:5000/get_user/" + usersStore.username)
+      .then(response => response.json())
+      .then(data => {
+        user.value = data.user;
+      });
     fetch("http://127.0.0.1:5000/get_logs/" + usersStore.username)
       .then(response => response.json())
       .then(data => {
@@ -41,7 +47,7 @@ function date_sorted(logs) {
     Please select a username first to continue!
   </div>
   <div class="container" v-else>
-    <h1 class="title is-3">Upcoming Medications</h1>
+    <h1 class="title is-3">Upcoming Medications for {{ user.first_name }}</h1>
     <div class="card m-2" v-for="(log, index) in log" :key="index">
       <div class="card-content container has-text-centered">
         <p class="title level-item is-4">{{ searchValueInList(drugs, log.drug_id).generic_name }}</p>
