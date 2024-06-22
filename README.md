@@ -44,3 +44,5 @@ Period tracker like - analyzes your mood for certain days of period --> analysin
 Labels for settings within app
 Family account system for app
 Previous medications (how long were you taking, WHY you stopped taking it)
+
+[Dev Docs](https://docs.google.com/document/d/17XwLa5vnaRyn055X1fiz8kVhpMb4cP5uQixNE5NjAGY/edit?usp=sharing)
