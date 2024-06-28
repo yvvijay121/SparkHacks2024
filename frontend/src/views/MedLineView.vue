@@ -1,5 +1,4 @@
 <script>
-import { string } from '@tensorflow/tfjs';
 import { ref } from 'vue'
 const drug = ref('')
 
@@ -21,7 +20,7 @@ export default {
             })
                 .then(res => res.json())
                 .then(data => this.sum = data)
-                .catch(err => console.log("youre a loser"))
+                .catch(err => console.log("Error: ", err))
             }
     }
 }  
@@ -31,7 +30,7 @@ export default {
     <h1 class="title is-1">Find your drug information</h1>
     <div class="card-content">
         <form @submit.prevent="getData">
-            <input v-model="drug" required placeholder="Enter you NDC">
+            <input v-model="drug" required placeholder="Enter your NDC">
             <button>Go</button>
         </form>
     </div>
