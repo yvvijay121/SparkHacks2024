@@ -7,10 +7,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
-admins = {
-    "yash":"September 2023"
-}
-
 def get_database_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
